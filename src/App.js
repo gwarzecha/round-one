@@ -1,34 +1,17 @@
 import React from "react";
 // named import from the file
-import { Counter } from "./Counter";
-import { Accordion } from './Accordion';
-import { Input } from './Input';
+import { MoviesList } from './MoviesList'
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Input />
-
-      <Counter />
-      <Accordion />
+      <MoviesList />
     </div>
   );
 }
 
-function HelloWorld({ name, greeting = "Hello" }) {
-  return (
-    <h1>
-      {" "}
-      {greeting} {name}!
-    </h1>
-  );
-}
 
-// HelloWorld.propTypes = {
-//   name: PropTypes.string,
-//   greeting: PropTypes.string,
 
-// }
 
 export default App;
