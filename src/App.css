@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.movies-list {
+  /* gets rid of hyphen/dots in list*/
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  /* repeat 4 grid colums of 1 fraction*/
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* targets the img inside of movies-list */
+.movies-list img {
+  width: 100%;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+}
