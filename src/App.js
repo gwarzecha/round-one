@@ -1,17 +1,25 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // named import from the file
-import { MoviesList } from './movies/MoviesList'
+import { MoviesList } from "./movies/MoviesList";
+import { MovieDetail } from "./movies/MovieDetail";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <MoviesList />
+      <Router>
+        <Switch>
+          <Route path="/details">
+            <MovieDetail />
+          </Route>
+          <Route path="/">
+            <MoviesList />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
-
-
-
 
 export default App;
