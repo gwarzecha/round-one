@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Movie } from "./Movie";
 import { Filter } from "../Filter";
 
-
 const API_URL =
-  "https://api.themoviedb.org/3/discover/movie?api_key=e140197f87c91e5e1952501c088ee92c&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate";
-const CONFIG_URL = "https://api.themoviedb.org/3/configuration?api_key=e140197f87c91e5e1952501c088ee92c"
+  "https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=";
+const CONFIG_URL = "https://api.themoviedb.org/3/configuration?api_key=";
 
 export function MoviesList() {
   // The parent owns the state of filter, even though the functionality is located within
@@ -17,32 +16,32 @@ export function MoviesList() {
 
   const getMovies = async () => {
     try {
-      const res = await fetch(API_URL)
-      const movies = await res.json()
-      setMovies(movies.results)
+      const res = await fetch(API_URL + process.env.REACT_APP_MOVIE_API);
+      const movies = await res.json();
+      setMovies(movies.results);
       // console.log('movies', movies);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   };
 
   const getConfig = async () => {
     try {
-      const res = await fetch(CONFIG_URL)
-      const config = await res.json()
-      setConfig(config)
+      const res = await fetch(CONFIG_URL + process.env.REACT_APP_MOVIE_API);
+      const config = await res.json();
+      setConfig(config);
       // console.log('movies', movies);
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   };
 
-  // useEffect allows getMovies to only run when the state changes. If getMovies() were outside 
+  // useEffect allows getMovies to only run when the state changes. If getMovies() were outside
   //of useEffect, it would run to infinity becuase it would get caught in an endless re-rendering
   //loop
   useEffect(() => {
-    getMovies()
-    getConfig()
+    getMovies();
+    getConfig();
   }, []);
 
   return (
@@ -51,7 +50,7 @@ export function MoviesList() {
       in as filter={filter}, etc */}
 
       <Filter filter={filter} setFilter={setFilter} />
-      <ul className='movies-list'>
+      <ul className="movies-list">
         {movies
           .filter((movie) =>
             // will return true if the filter is found in the movie name
