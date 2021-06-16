@@ -12,7 +12,6 @@ export function Movie({ movie, config }) {
             alt={movie.title + " Poster"}
           />
         )}
-        <h3>{movie.title}</h3>
       </Link>
     </li>
   );
